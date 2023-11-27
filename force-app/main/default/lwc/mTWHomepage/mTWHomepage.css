@@ -1,0 +1,8 @@
+.box1 {
+    padding:10px;
+    cursor: pointer;
+}
+    
+.box1:hover{
+background-color: #e5e5e5;
+}

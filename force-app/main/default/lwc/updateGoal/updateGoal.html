@@ -1,0 +1,168 @@
+<template>
+    <lightning-card>
+        <lightning-layout multiple-rows>
+            <lightning-layout-item size="12" small-device-size="1" medium-device-size="10" large-device-size="12" padding="around-small">
+            <div class="slds-grid slds-var-p-left_xx-large">
+                <div class="slds-col slds-size_1-of-3"> <b>Current Stage: </b>Readliness Program</div>
+                <div class="slds-col slds-size_1-of-3"> <b>Next Stage: </b>Trainee</div>
+                <div class="slds-col slds-size_1-of-3"> <b>PR / Transition Date: </b>10/1/2024</div>
+            </div>
+            </lightning-layout-item>
+
+        </lightning-layout>
+        <lightning-layout multiple-rows>
+            <lightning-layout-item size="12" small-device-size="4" medium-device-size="10" large-device-size="12" padding="around-small">
+                <div class="slds-text-heading_large slds-text-align_center slds-var-p-top_medium">
+                    <b>UPDATE YOUR READINESS EDUCATION GOAL:</b>
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" small-device-size="4" medium-device-size="10" large-device-size="12" padding="around-small">
+            <div class="slds-var-p-top_large slds-align_absolute-center slds-var-p-left_xx-large slds-var-p-right_xx-large">
+                <table class="slds-table slds-table_cell-buffer slds-table_header-hidden slds-table_bordered slds-max-medium-table_stacked-horizontal">
+                    <tr>
+                        <th class="slds-text-heading_medium slds-border_left" style="background-color: rgba(216, 209, 209, 0.846);">Readiness Threshold</th>
+                        <th class="slds-text-heading_medium slds-border_left">Readiness Program Goal</th>
+                        <th class="slds-text-heading_medium slds-border_left slds-border_right">Priority Level</th>
+                    </tr>
+                    <tr>
+                        <td class="slds-text-body_small slds-border_left" style="background-color: rgba(216, 209, 209, 0.846);">Complete an Education</td>
+                        <td class="slds-text-body_small slds-border_left">Enroll in HiSET Classes</td>
+                        <td class="slds-text-body_small slds-border_left slds-border_right" style="color:red"><b>{priority}</b><a onclick={updatePriority}>&nbsp;&nbsp;Update Priority</a></td>
+                    </tr>
+                </table>
+            </div>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" small-device-size="4" medium-device-size="10" large-device-size="12" padding="around-small">
+            <div class="slds-var-p-top_large slds-align_absolute-center slds-var-p-left_xx-large slds-var-p-right_xx-large">
+                <table class="slds-table slds-table_cell-buffer slds-table_header-hidden slds-table_bordered slds-max-medium-table_stacked-horizontal">
+                    <tr>
+                        <th class="slds-text-heading_medium slds-border_left">Assets<p class="slds-text-body_small">(Things that will help you)</p></th>
+                        <th class="slds-text-heading_medium slds-border_left slds-border_right">Barriers<p class="slds-text-body_small">(Things that will make it)</p></th>
+                    </tr>
+                    <tr>
+                        <td class="slds-text-body_small slds-border_left">
+                            <p>Line 1</p>
+                            <p >Line 2</p>
+                        </td>
+                        <td class="slds-text-body_small slds-border_left slds-border_right">
+                            <p>Line 1</p>
+                            <p>Line 2</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" small-device-size="4" medium-device-size="10" large-device-size="12" padding="around-small">
+            <div class="slds-var-p-top_large slds-align_absolute-center slds-var-p-left_xx-large slds-var-p-right_xx-large">
+                <table class="slds-table slds-table_cell-buffer slds-table_header-hidden slds-table_bordered slds-max-medium-table_stacked-horizontal">
+                    <tr>
+                        <th colspan="5" class="slds-text-heading_medium slds-border_left slds-border_right">Tasks to Accomplish This Goal</th>
+                    </tr>
+                    <tr>
+                        <th class="slds-text-body_small slds-border_left"><b>Task</b></th>
+                        <th class="slds-text-body_small slds-border_left"><b>Due Date</b></th>
+                        <th class="slds-text-body_small slds-border_left"><b>Status</b></th>
+                        <th class="slds-text-body_small slds-border_left"><b>Responsible Party</b></th>
+                        <th class="slds-text-body_small slds-border_left slds-border_right"><b>Action</b></th>
+                    </tr>
+                    <template for:each={wiredTaskRecords.data} for:item="record" for:index="index">
+                        <tr key={record.Id}>
+                            <td class="slds-text-body_small slds-border_left">{record.Subject}</td>
+                            <td class="slds-text-body_small slds-border_left">{record.ActivityDate}</td>
+                            <td class="slds-text-body_small slds-border_left">{record.Status}</td>
+                            <td class="slds-text-body_small slds-border_left">{record.Owner.Name}</td>
+                            <td class="slds-text-body_small slds-border_left slds-border_right"><a onclick={updateTaskStatus} data-index={index} id={record.Id} data-value={record.Status} >Update Status</a></td>
+                        </tr>
+                    </template>
+                    <tr>
+                        <td colspan="5" class="slds-text-body_small slds-border_left slds-border_right slds-text-align_center"><a style="color:orange;" onclick={OpenTaskModal}>ADD A NEW TASK</a></td>
+                    </tr>
+                </table>
+            </div>
+            </lightning-layout-item>
+            <template if:true={showSaveModal}>
+                <lightning-layout-item size="12" small-device-size="4" medium-device-size="10" large-device-size="12" padding="around-small">
+                    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container" style="width: 55%; max-width: 65%;">
+                        <header class="slds-modal__header">
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalBox}>
+                                <lightning-icon icon-name="utility:close"
+                                alternative-text="close"
+                                variant="inverse"
+                                size="small" ></lightning-icon>
+                                <span class="slds-assistive-text">Close</span>
+                            </button>
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">New Task</h2>
+                        </header>
+                    
+                        <div class="slds-modal__content modalBody" id="modal-content-id-1">
+                            <template if:true={showLoading}>
+                                <lightning-spinner alternative-text="Loading" size="medium" class="spinnerClass"></lightning-spinner>
+                            </template>
+                            <!--<div class="slds-col slds-size_1-of-2">
+                                <div class="slds-text-heading_small">Task Information</div>
+                            </div>-->
+                            <div class="slds-grid slds-gutters slds-p-top_small slds-p-left_small slds-p-right_small">
+                                <div class="slds-col slds-size_2-of-2">
+                                    <lightning-input type="text" label="Subject" name="subject" value={subjectValue} required="true"></lightning-input>
+                                </div>
+                            </div>
+                            <div class="slds-grid slds-gutters slds-p-top_medium slds-p-left_small slds-p-bottom_small slds-p-right_small">
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning-combobox label="Status" options={statusOptions} value={defaultStatusValue} name="status" required="true"></lightning-combobox>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning-input type="date" name="dueDate" label="Due Date" value={dateValue}></lightning-input>
+                                </div>
+                            </div>
+                        </div>
+
+                        <footer class="slds-modal__footer">
+                            <button class="slds-button slds-button_neutral" onclick={hideModalBox}>Cancel</button>
+                            <button class="slds-button slds-button_brand" onclick={saveTask} name="Save">Save</button>
+                        </footer>
+                    
+                    </div>
+                    </section>
+                    <div class="slds-backdrop slds-backdrop_open"></div>
+                </lightning-layout-item>
+            </template>
+            <template if:true={openUpdateStatusModal}>
+                <lightning-layout-item size="12" small-device-size="4" medium-device-size="10" large-device-size="12" padding="around-small">
+                    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container" style="width: 20%; max-width: 20%;">
+                        <header class="slds-modal__header">
+                            <h2 class="slds-text-heading_medium slds-hyphenate">{updateOption}</h2>
+                        </header>
+                    
+                        <div class="slds-modal__content slds-p-around_medium" >
+                            <div class="slds-grid slds-gutters slds-p-top_medium">
+                                <template if:true={updateStatusValue}>
+                                    <div class="slds-col slds-size_1-of-1">
+                                        <lightning-combobox label="Status" options={statusOptions} value={defaultStatusValue} name="status" required="true"></lightning-combobox>
+                                    </div>
+                                </template>
+                                <template if:true={updatePriorityValue}>
+                                    <div class="slds-col slds-size_1-of-1">
+                                        <lightning-combobox label="Priority" options={priorityOptions} value={defaultPriorityValue} name="priority" required="true"></lightning-combobox>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+
+                        <footer class="slds-modal__footer">
+                            <button class="slds-button slds-button_neutral" onclick={hideModalBox}>Cancel</button>
+                            <button class="slds-button slds-button_brand" onclick={saveTask} name="Update">Save</button>
+                        </footer>
+                    
+                    </div>
+                    </section>
+                    <div class="slds-backdrop slds-backdrop_open"></div>
+                </lightning-layout-item>
+            </template>
+            <div class="slds-float_left slds-p-left_medium">
+                <button class="slds-button slds-button_brand" name="Back" onclick={redirectReadinessPage}>Back</button>
+            </div>
+        </lightning-layout>
+    </lightning-card>
+</template>

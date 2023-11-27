@@ -1,0 +1,201 @@
+<template>
+    <lightning-card>
+            <div class="slds-grid slds-gutters">
+                <div class=" slds-var-p-left_xx-large slds-size_1-of-3">
+                    <div class="slds-text-heading_small">
+                        <b>CURRENT STAGE:</b>Readiness Program</div>
+                </div>
+                <div class="slds-col slds-size_1-of-3">
+                    <div class="slds-text-heading_small">
+                    <b>NEXT STAGE:</b>Trainee</div>
+                </div>
+                <div class="slds-col slds-size_1-of-3">
+                    <div class="slds-text-heading_small">
+                        <b>PR / Transaition Date:</b> 8/10/2023</div>
+                </div>
+            </div>
+
+        <!--<div class="slds-grid">
+            <div class="slds-p-top_large slds-col slds-size_1-of-6">
+                <img src={imageForEmployment} width='80%' height='80%'>
+                <P class="slds-p-left_large"><b>Low Priority</b></P>
+            </div>
+
+            <div class="slds-p-top_large slds-col slds-size_2-of-6">
+                <p style="background-color: rgb(205, 194, 194);">Readiness Threshold:</p>
+                <p style="background-color: rgb(205, 194, 194);">Get work-essential documents</p>
+                <p class="slds-var-p-top_small"><b>My Goals</b></p>
+                <p>Will be soon</p>
+                <p>Will be soon</p>
+                <p>Will be soon</p>
+                <p class="slds-var-p-left_xx-large"><lightning-formatted-url value="https://www.google.com" tooltip="" 
+                    label="Update Goal" target="_blank" ></lightning-formatted-url></p>
+            </div>
+
+        New add for housing
+        <div class="slds-grid">
+            <div class="slds-p-top_large slds-col slds-size_5-of-6">
+                <img src={imageForHousing} width='60%' height='60%'>
+                <P class="slds-p-left_large"><b>Low Priority</b></P>
+            </div>
+
+            <div class="slds-p-top_large slds-col slds-size_6-of-6">
+                <p style="background-color: rgb(205, 194, 194);">Readiness Threshold:</p>
+                <p style="background-color: rgb(205, 194, 194);">Get work-essential documents</p>
+                <p class="slds-var-p-top_small"><b>My Goals</b></p>
+                <p>Will be soon</p>
+                <p>Will be soon</p>
+                <p>Will be soon</p>
+                <p class="slds-var-p-left_xx-large"><lightning-formatted-url value="https://www.google.com" tooltip="" 
+                    label="Update Goal" target="_blank" ></lightning-formatted-url></p>
+            </div>
+        </div>
+    </div>-->
+        <lightning-layout>
+            <lightning-layout-item  padding="around-small" size="12" small-device-size="4" medium-device-size="8" large-device-size="12">
+                
+                <div class="slds-grid slds-wrap">
+                        <div class="slds-p-top_large slds-col slds-size_2-of-12">
+                            <img src={imageForEmployment} width='70%' height='70%'>
+                            <P class="slds-align_absolute-center"><b>{employmentPriority} Priority</b></P>
+                        </div>
+
+                        <div class=" slds-p-top_large slds-p-right_x-small slds-col slds-size_4-of-12">
+                            <p style="background-color: rgb(205, 194, 194);">Readiness Threshold:</p>
+                            <p style="background-color: rgb(205, 194, 194);">Get work-essential documents</p>
+                            <p class="slds-var-p-top_small"><b>My Goals</b></p>
+                            <p>Will be soon</p>
+                            <p>Will be soon</p>
+                            <p>Will be soon</p>
+                            <p class="slds-var-p-left_xx-large"><a onclick={openUpdateGoalComponent} id="a1YDn000000djo8MAA" data-value={employmentPriority}>Update Goal</a></p>
+                        </div>
+
+                    <!--New add for housing-->
+                        <div class="slds-col slds-size_2-of-12">
+                            <img src={imageForHousing} width='70%' height='55%'>
+                            <P class="slds-align_absolute-center"><b>{housingPriority} Priority</b></P>
+                        </div>
+
+                        <div class="slds-p-right_x-small slds-p-top_large slds-col slds-size_4-of-12">
+                            <p style="background-color: rgb(205, 194, 194);">Readiness Threshold:</p>
+                            <p style="background-color: rgb(205, 194, 194);">Get work-essential documents</p>
+                            <p class="slds-var-p-top_small"><b>My Goals</b></p>
+                            <p>Will be soon</p>
+                            <p>Will be soon</p>
+                            <p>Will be soon</p>
+                            <p class="slds-var-p-left_xx-large"><a onclick={openUpdateGoalComponent} id="a1YDn000000djoDMAQ" data-value={housingPriority}>Update Goal</a></p>
+                        </div>
+                </div>
+            </lightning-layout-item>
+        </lightning-layout>     
+
+        <hr>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-p-top_large slds-col slds-size_2-of-12">
+                <img src={imageForFinance} width='80%' height='80%'>
+                <P class="slds-align_absolute-center"><b>{financePriority} Priority</b></P>
+            </div>
+
+            <div class=" slds-p-top_large slds-p-right_x-small slds-col slds-size_4-of-12">
+                <p style="background-color: rgb(205, 194, 194);">Readiness Threshold:</p>
+                <p style="background-color: rgb(205, 194, 194);">Set a 3-month education goal</p>
+                <p class="slds-var-p-top_small"><b>My Goals</b></p>
+                <p>Will be soon</p>
+                <p>Will be soon</p>
+                <p>Will be soon</p>
+                <p class="slds-var-p-left_xx-large"><a onclick={openUpdateGoalComponent} id="a1YDn000000djo3MAA" data-value={financePriority}>Update Goal</a></p>
+            </div>
+
+             <!--New add for health-->
+            <div class="slds-p-top_x-large slds-col slds-size_2-of-12">
+                <img src={imageForHealth} width='80%' height='80%'>
+                <P class="slds-align_absolute-center"><b>{healthPriority} Priority</b></P>
+            </div>
+
+            <div class="slds-p-right_x-small slds-p-top_large slds-col slds-size_4-of-12">
+                <p style="background-color: rgb(205, 194, 194);">Readiness Threshold:</p>
+                <p style="background-color: rgb(205, 194, 194);">Get work-essential documents</p>
+                <p class="slds-var-p-top_small"><b>My Goals</b></p>
+                <p>Will be soon</p>
+                <p>Will be soon</p>
+                <p>Will be soon</p>
+                <p class="slds-var-p-left_xx-large"><a onclick={openUpdateGoalComponent} id="a1YDn000000djo5MAA" data-value={healthPriority}>Update Goal</a></p>
+            </div>
+        </div>
+
+        <hr>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-p-top_large slds-col slds-size_2-of-12">
+                <img src={imageForEducation} width='80%' height='80%'>
+                <P class="slds-align_absolute-center"><b>{educationPriority} Priority</b></P>
+            </div>
+
+            <div class="slds-p-top_large slds-p-right_x-small slds-col slds-size_4-of-12">
+                <p style="background-color: rgb(205, 194, 194);">Readiness Threshold:</p>
+                <p style="background-color: rgb(205, 194, 194);">Have plan for 3-meals/day</p>
+                <p class="slds-var-p-top_small"><b>My Goals</b></p>
+                <p>Will be soon</p>
+                <p>Will be soon</p>
+                <p>Will be soon</p>
+                <p class="slds-var-p-left_xx-large"><a onclick={openUpdateGoalComponent} id="a1YDn000000djo4MAA" data-value={educationPriority}>Update Goal</a></p>
+            </div>
+
+             <!--New add for support-->
+        
+            <div class="slds-p-top_x-large slds-col slds-size_2-of-12">
+                <img src={imageForSupport} width='80%' height='80%'>
+                <P class="slds-align_absolute-center "><b>{supportPriority} Priority</b></P>
+            </div>
+
+            <div class="slds-p-right_x-small slds-p-top_large slds-col slds-size_4-of-12">
+                <p style="background-color: rgb(205, 194, 194);">Readiness Threshold:</p>
+                <p style="background-color: rgb(205, 194, 194);">Get work-essential documents</p>
+                <p class="slds-var-p-top_small"><b>My Goals</b></p>
+                <p>Will be soon</p>
+                <p>Will be soon</p>
+                <p>Will be soon</p>
+                <p class="slds-var-p-left_xx-large"><a onclick={openUpdateGoalComponent} id="a1YDn000000djnzMAA" data-value={supportPriority}>Update Goal</a></p>
+            </div>
+        
+        </div>
+
+        <hr>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-p-top_large slds-col slds-size_2-of-12">
+                <img src={imageForDCF} width='90%' height='90%'>
+                <P class="slds-align_absolute-center"><b>{dcfPriority} Priority</b></P>
+            </div>
+
+            <div class="slds-p-top_large slds-p-right_x-small slds-col slds-size_4-of-12">
+                <p style="background-color: rgb(205, 194, 194);">Readiness Threshold:</p>
+                <p style="background-color: rgb(205, 194, 194);">ID Workers & Action plan</p>
+                <p class="slds-var-p-top_small"><b>My Goals</b></p>
+                <p>Will be soon</p>
+                <p>Will be soon</p>
+                <p>Will be soon</p>
+                <p class="slds-var-p-left_xx-large"><a onclick={openUpdateGoalComponent} id="a1YDn000000djo9MAA" data-value={dcfPriority}>Update Goal</a></p>
+            </div>
+
+         <!--New add for parenting-->
+            <div class="slds-p-top_x-large slds-col slds-size_2-of-12">
+                <img src={imageForParenting} width='90%' height='90%'>
+                <P class="slds-align_absolute-center "><b>{parentingPriority} Priority</b></P>
+            </div>
+
+            <div class="slds-p-right_x-small slds-p-top_large slds-col slds-size_4-of-12">
+                <p style="background-color: rgb(205, 194, 194);">Readiness Threshold:</p>
+                <p style="background-color: rgb(205, 194, 194);">Get work-essential documents</p>
+                <p class="slds-var-p-top_small"><b>My Goals</b></p>
+                <p>Will be soon</p>
+                <p>Will be soon</p>
+                <p>Will be soon</p>
+                <p class="slds-var-p-left_xx-large"><a onclick={openUpdateGoalComponent} id="a1YDn000000djoIMAQ" data-value={parentingPriority}>Update Goal</a></p>
+            </div>    
+        </div>
+    <!--<template if:true={showChildComponent}>
+        <c-update-goal priority={priorityValue} onpriorityvaluechange={hanldePrirorityValueChange}></c-update-goal>
+    </template>-->
+   
+    </lightning-card>
+   
+</template>

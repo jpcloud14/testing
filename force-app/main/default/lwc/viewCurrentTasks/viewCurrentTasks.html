@@ -1,0 +1,25 @@
+<template>
+    <lightning-card>
+        <div>
+            <p class="slds-align_absolute-center" style="font-size:30px;">Current Task</p>
+            <table class="slds-table slds-table_cell-buffer slds-table_header-hidden slds-table_bordered slds-max-medium-table_stacked-horizontal">
+                
+                <tr>
+                    <th class="slds-text-body_small slds-border_left"><b>Subject</b></th>
+                    <th class="slds-text-body_small slds-border_left"><b>Due Date</b></th>
+                    <th class="slds-text-body_small slds-border_left"><b>Status</b></th>
+                </tr>
+                <template for:each={wiredCurrentTask.data} for:item="record">
+                    <tr key={record.Id}>
+                        <td class="slds-text-body_small slds-border_left">{record.Subject}</td>
+                        <td class="slds-text-body_small slds-border_left">{record.ActivityDate}</td>
+                        <td class="slds-text-body_small slds-border_left">{record.Status}</td>
+                    </tr>
+                </template>
+                <tr>
+                    <td colspan="3" class="slds-text-body_small slds-border_left slds-border_right slds-text-align_center"><a onclick={redirectHomePage}>Back</a></td>
+                </tr>
+            </table>
+        </div>
+    </lightning-card>
+</template>

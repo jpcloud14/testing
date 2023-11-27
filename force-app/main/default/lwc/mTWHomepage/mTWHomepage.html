@@ -1,0 +1,51 @@
+<template>
+    <lightning-card>
+
+    <!--<div class="slds-float_left slds-p-left_x-small ">
+        <img src={imageForMtwLogo} width='30%' height='30%'>
+    </div>-->
+
+    <!-- <img src="/sfc/servlet.shepherd/version/download/068Dn000005uv5KIAQ" width='30%' height='30%'> -->
+
+    <img src={contentId} data-contentkey={contentId}>  
+
+    <div class="sf-interactions-proxy sf-interactions-proxySelectElement ui-draggable ui-draggable-handle" data-orig-item-id="b33c7c2a-89e3-4d06-a754-62845d7f79f8"></div>
+    
+    <div class="slds-align_absolute-center ">
+        <div class="slds-text-heading_large">WHAT GOALS DO YOU WANT TO SEE?</div>
+        <!--<img src={imageForGoals} width='30%' height='30%'>-->
+    </div>
+
+    <div class="slds-align_absolute-center">
+        <div class="box1" style="width:200px; height:200px;margin:auto;">
+            <img src={imageForGoals} onclick={redirectViewAllGoals}>
+        </div>
+    </div>
+
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col slds-size_2-of-5" style="width: 33.33%; height:50%">
+            <div class="box1" style="width:200px; height:200px;margin:auto;">
+                <img src={imageForReadiness} onclick={redirectReadinessPage}>
+            </div>
+        </div>
+        <div class="slds-col slds-size_2-of-5 slds-text-align_center" style="width: 33.33%; height:50%">
+            <div class="box1" style="width:200px; height:200px;margin:auto;">
+                <img src={imageForCore} onclick={redirectUnderProcess}>
+            </div>
+        </div>
+        <div class="slds-col slds-size_1-of-3 slds-text-align_center" style="width: 33.33%; height:50%">
+            <div class="box1" style="width:200px; height:200px;margin:auto;">
+                <img src={imageForCareer} onclick={redirectUnderProcess}>
+            </div>
+        </div>
+    </div>
+
+    <div class="slds-grid slds-float_right slds-p-right_x-small">
+        <div class="slds-col">
+            <button class="slds-button slds-button_neutral" name="Back" onclick={viewCurrentTasks}>My Current Tasks</button>
+        </div>
+    </div>
+    
+    
+</lightning-card>
+</template>
